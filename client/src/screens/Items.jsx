@@ -58,14 +58,12 @@ const Items = () => {
           bottom: 30,
           left: "auto",
           position: "fixed",
+          paddingRight: "1.5rem",
         }}
         onClick={handleOpen}
       >
         <AddOutlined sx={{ mr: 0.4 }} />
-
-        <Typography variant="body" color="initial" mr={0.6}>
-          Add Item
-        </Typography>
+        Add Item
       </Fab>
       <AddModal open={open} handleClose={handleClose} />
     </div>
