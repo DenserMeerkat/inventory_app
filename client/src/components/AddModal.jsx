@@ -23,7 +23,6 @@ import {
   CloseOutlined,
   PermIdentityOutlined,
   ProductionQuantityLimitsOutlined,
-  Close,
 } from "@mui/icons-material";
 import axios from "axios";
 

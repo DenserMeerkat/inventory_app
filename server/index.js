@@ -26,6 +26,19 @@ app.get("/items", (req, res) => {
   });
 });
 
+app.post("/users", (req, res) => {
+  const sqlCheck = "SELECT * FROM users WHERE username = ? AND password = ?";
+  const values = [req.body.user, req.body.pass];
+  db.query(sqlCheck, values, (err, results, data) => {
+    if (results.length > 0) {
+      res.json("Login Success!");
+    } else {
+      res.json("Login Failed!");
+    }
+    res.end();
+  });
+});
+
 app.post("/items", (req, res) => {
   const sqlInsert =
     "INSERT INTO items (`name`, `desc`, `thumb`, `entry`, `qty`, `sellerId`) VALUES (?)";
@@ -46,7 +59,6 @@ app.post("/items", (req, res) => {
 app.delete("/items/:id", (req, res) => {
   const id = req.params.id;
   const sqlDelete = "DELETE FROM items WHERE itemId = ?";
-  const values = [req.body.itemId];
   db.query(sqlDelete, [id], (err, data) => {
     if (err) return res.json(err);
     else return res.json("Item Deleted Successfully");
